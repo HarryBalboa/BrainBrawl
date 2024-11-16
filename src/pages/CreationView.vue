@@ -3,6 +3,7 @@ import {ref} from "vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import TextField from "../components/TextField.vue";
 import PlayerManager from "../components/PlayerManager.vue";
+import QuestionManager from "../components/QuestionManager.vue";
 
 const tabs = [{text: "Player", icon: "users"}, {text: "Questions", icon: "clipboard-question"}, {text: "Games", icon: "gamepad"}]
 const currentTab = ref("Player");
@@ -25,6 +26,9 @@ const currentTab = ref("Player");
   <div>
     <template v-if="currentTab === 'Player'">
       <PlayerManager></PlayerManager>
+    </template>
+    <template v-if="currentTab === 'Questions'">
+      <question-manager></question-manager>
     </template>
   </div>
 </div>

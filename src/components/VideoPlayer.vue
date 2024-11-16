@@ -1,10 +1,12 @@
 <script setup>
 	import { ref, computed } from 'vue';
-	const question = defineModel('question');
+	const question = defineModel();
 
 	const isActive = ref(false);
-	const source = computed(() => {
-		return `./${question.value.fileName}`;
+	const source = computed( () => {
+    if(!question) return null;
+    console.log(question.value.file)
+		return question.value.file;
 	});
 
 	function handleRightClick() {
@@ -22,7 +24,9 @@
 			<div class="text-4xl">{{ question.points }} Points</div>
 		</div>
 		<div v-else class="w-full h-full p-4">
-			<video controls class="w-full h-full object-contain" :src="source" />
+			<video controls class="w-full h-full object-contain">
+        <source :src="source">
+      </video>
 		</div>
 	</div>
 </template>

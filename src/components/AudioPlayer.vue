@@ -1,6 +1,6 @@
 <script setup>
 	import { ref, computed } from 'vue';
-	const question = defineModel('question');
+	const question = defineModel();
 
 	function handleRightClick() {
 		question.value = null;
@@ -8,7 +8,7 @@
 
 	const isActive = ref(false);
 	const source = computed(() => {
-		return `./${question.value.fileName}`;
+		return question.value.file;
 	});
 </script>
 <template>
